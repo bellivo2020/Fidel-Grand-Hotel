@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fidel Grand Hotel | Luxury Hospitality & Executive Stays</title>
+<meta name="description" content="Fidel Grand Hotel: refined rooms, three signature dining venues, rooftop wellness and 24/7 concierge with Clara, our AI front desk receptionist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0F2A2E;
+    --ink-soft:#1B3D42;
+    --brass:#B08D57;
+    --stone:#EDEFEA;
+    --paper:#FAFAF7;
+    --text:#22302F;
+    --muted:#5C6B69;
+    --line:#D9DDD6;
+    --radius:6px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Figtree',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;color:var(--text);background:var(--paper);line-height:1.65;font-size:17px}
+  h1,h2,h3{font-family:'Marcellus',Georgia,'Times New Roman',serif;font-weight:400;color:var(--ink);line-height:1.2}
+  img{max-width:100%;display:block}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  :focus-visible{outline:3px solid var(--brass);outline-offset:3px}
+
+  /* demo banner */
+  .demo{background:var(--ink-soft);color:#E8EDE9;font-size:15px;text-align:center;padding:10px 16px}
+  .demo strong{color:#E5C990;font-weight:600}
+
+  /* header */
+  header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;max-width:1120px;margin:0 auto;flex-wrap:wrap}
+  .brand{font-family:'Marcellus',Georgia,serif;font-size:22px;text-decoration:none;color:#fff;letter-spacing:.02em}
+  .brand span{color:var(--brass)}
+  nav ul{display:flex;gap:26px;list-style:none;flex-wrap:wrap}
+  nav a{text-decoration:none;font-size:15px;color:#D6DDD9}
+  nav a:hover{color:#fff}
+  .btn{display:inline-block;background:var(--brass);color:#1A1608;padding:11px 22px;border-radius:var(--radius);text-decoration:none;font-weight:600;font-size:15px;border:0;cursor:pointer}
+  .btn:hover{background:#C29F68}
+  .btn.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55)}
+  .btn.ghost:hover{background:rgba(255,255,255,.1)}
+
+  /* hero */
+  .hero{position:relative;color:#fff;min-height:78vh;display:flex;align-items:flex-end;background:#0F2A2E url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,42,46,.25) 0%,rgba(15,42,46,.88) 100%)}
+  .hero .wrap{position:relative;padding-top:120px;padding-bottom:64px}
+  .hero h1{color:#fff;font-size:clamp(38px,6vw,68px);max-width:14ch;margin-bottom:18px}
+  .hero p{max-width:56ch;font-size:18px;color:#E3E9E5;margin-bottom:28px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .facts{background:var(--ink);color:#fff}
+  .facts .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding-top:26px;padding-bottom:26px}
+  .facts div{border-left:2px solid var(--brass);padding-left:16px}
+  .facts small{display:block;color:#B9C5C0;font-size:14px}
+  .facts b{font-family:'Marcellus',Georgia,serif;font-weight:400;font-size:20px}
+
+  section{padding:84px 0}
+  .head{max-width:640px;margin-bottom:44px}
+  .head h2{font-size:clamp(30px,4vw,42px);margin-bottom:12px}
+  .head p{color:var(--muted)}
+
+  /* rooms */
+  .rooms{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .room{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column}
+  .room .img{position:relative}
+  .room img{width:100%;height:220px;object-fit:cover}
+  .tag{position:absolute;top:14px;left:14px;background:var(--ink);color:#fff;font-size:13px;padding:4px 10px;border-radius:3px}
+  .room .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .price{font-family:'Marcellus',Georgia,serif;font-size:26px;color:var(--ink)}
+  .price small{font-family:'Figtree',sans-serif;font-size:14px;color:var(--muted)}
+  .meta{font-size:14px;color:var(--muted)}
+  .room ul{list-style:none;font-size:15px;margin-top:4px}
+  .room li{padding-left:22px;position:relative;margin-bottom:4px}
+  .room li::before{content:"✓";position:absolute;left:0;color:var(--brass);font-weight:700}
+  .room .btn{margin-top:auto;text-align:center;background:var(--ink);color:#fff}
+  .room .btn:hover{background:var(--ink-soft)}
+
+  /* dining */
+  .band{background:var(--stone)}
+  .dining{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .venue img{width:100%;height:230px;object-fit:cover;border-radius:var(--radius);margin-bottom:16px}
+  .venue .hours{color:var(--brass);font-weight:600;font-size:15px}
+  .venue h3{font-size:24px;margin:4px 0 6px}
+  .venue p{color:var(--muted);font-size:16px}
+  .note{margin-top:34px;color:var(--muted)}
+
+  /* amenities */
+  .split{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+  .split img{border-radius:var(--radius);width:100%;height:100%;max-height:520px;object-fit:cover}
+  .amen{display:grid;grid-template-columns:1fr 1fr;gap:26px 28px;margin-top:8px}
+  .amen h3{font-size:19px;margin-bottom:4px}
+  .amen p{font-size:15px;color:var(--muted)}
+  .family{margin-top:30px;padding:18px 20px;border-left:3px solid var(--brass);background:#fff;font-size:15.5px}
+  .family b{font-family:'Marcellus',Georgia,serif;font-weight:400;font-size:19px;color:var(--ink);display:block}
+
+  /* policies */
+  .policies{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .policy{border-top:2px solid var(--ink);padding-top:16px}
+  .policy h3{font-size:19px;margin-bottom:6px}
+  .policy p{font-size:15px;color:var(--muted)}
+
+  footer{background:var(--ink);color:#C5D0CB;text-align:center;padding:40px 24px;font-size:15px}
+  footer .brand{display:block;margin-bottom:8px}
+
+  @media (max-width:900px){
+    .rooms,.dining,.policies{grid-template-columns:1fr 1fr}
+    .split{grid-template-columns:1fr}
+    .facts .wrap{grid-template-columns:1fr}
+  }
+  @media (max-width:620px){
+    section{padding:60px 0}
+    .rooms,.dining,.policies,.amen{grid-template-columns:1fr}
+    nav ul{gap:16px}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="demo">Live AI receptionist demo. Tap the chat bubble at the bottom right to talk to <strong>Clara</strong>. Try asking: “Room rates?”, “Late 11:30 PM flight” or “8-room retreat”.</div>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#">FIDEL <span>GRAND</span> Hotel &amp; Suites</a>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="#rooms">Rooms &amp; suites</a></li>
+        <li><a href="#dining">Dining</a></li>
+        <li><a href="#amenities">Wellness &amp; events</a></li>
+        <li><a href="#policies">Guest info</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#rooms">Reserve a stay</a>
+  </div>
+</header>
+
+<main>
+  <div class="hero" role="img" aria-label="Fidel Grand Hotel exterior at dusk">
+    <div class="wrap">
+      <h1>Timeless elegance, effortless hospitality.</h1>
+      <p>Refined rooms, three signature dining venues, a rooftop infinity pool and round-the-clock service from Clara, our AI front desk receptionist.</p>
+      <div class="cta">
+        <a class="btn" href="#rooms">Explore rooms from $180 a night</a>
+        <a class="btn ghost" href="#amenities">Hotel amenities</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="facts">
+    <div class="wrap">
+      <div><small>Check-in / check-out</small><b>3:00 PM / 11:00 AM</b></div>
+      <div><small>Fiber Wi-Fi</small><b>300 Mbps, free</b></div>
+      <div><small>Front desk &amp; dining</small><b>24/7 concierge</b></div>
+    </div>
+  </div>
+
+  <section id="rooms">
+    <div class="wrap">
+      <div class="head">
+        <h2>Rooms &amp; executive suites</h2>
+        <p>Every stay includes free 300 Mbps Fiber Wi-Fi, 24/7 fitness center access and a “Pay at Hotel” option. Ask Clara in the bottom-right corner to reserve.</p>
+      </div>
+      <div class="rooms">
+        <article class="room">
+          <div class="img"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=80" alt="Deluxe King Room with plush bedding" loading="lazy"><span class="tag">Most popular</span></div>
+          <div class="body">
+            <h3>Deluxe King Room</h3>
+            <div class="price">$180 <small>/ night</small></div>
+            <div class="meta">420 sq ft · King bed · Up to 2 guests</div>
+            <p>Plush king bedding, a remote-work desk with fast Wi-Fi, a rainfall marble shower and a Nespresso bar.</p>
+            <ul>
+              <li>Optional Grand Bistro buffet breakfast (+$25)</li>
+              <li>Free cancellation up to 24 hours before check-in</li>
+            </ul>
+            <a class="btn" href="#" onclick="return askClara();">Book Deluxe King with Clara</a>
+          </div>
+        </article>
+        <article class="room">
+          <div class="img"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" alt="Premier Skyline Room with city views" loading="lazy"><span class="tag">Panoramic view</span></div>
+          <div class="body">
+            <h3>Premier Skyline Room</h3>
+            <div class="price">$320 <small>/ night</small></div>
+            <div class="meta">560 sq ft · Corner king · Up to 3 guests</div>
+            <p>Floor-to-ceiling skyline views, a deep soaking tub, a lounge seating area and priority late check-out until 2:00 PM.</p>
+            <ul>
+              <li>Daily buffet breakfast included</li>
+              <li>Priority express digital check-in</li>
+            </ul>
+            <a class="btn" href="#" onclick="return askClara();">Book Skyline Room with Clara</a>
+          </div>
+        </article>
+        <article class="room">
+          <div class="img"><img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Grand Executive Suite living area" loading="lazy"><span class="tag">Signature suite</span></div>
+          <div class="body">
+            <h3>Grand Executive Suite</h3>
+            <div class="price">$550 <small>/ night</small></div>
+            <div class="meta">950 sq ft · Separate living area · Up to 4 guests</div>
+            <p>A private living and dining parlor, a master bedroom suite, dedicated VPN bandwidth and VIP concierge and wellness privileges.</p>
+            <ul>
+              <li>Full buffet breakfast and Aura Lounge welcome</li>
+              <li>15% off stays of 7 nights or more</li>
+            </ul>
+            <a class="btn" href="#" onclick="return askClara();">Book Executive Suite with Clara</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="dining" class="band">
+    <div class="wrap">
+      <div class="head">
+        <h2>Three signature dining venues</h2>
+        <p>Plus 24-hour in-room dining with a dedicated late-night menu from 11:00 PM to 6:00 AM.</p>
+      </div>
+      <div class="dining">
+        <article class="venue">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="The Grand Bistro dining room" loading="lazy">
+          <div class="hours">Breakfast 6:30 AM – 10:30 AM</div>
+          <h3>The Grand Bistro</h3>
+          <p>All-day international dining and our generous morning buffet ($25 per person for room-only guests).</p>
+        </article>
+        <article class="venue">
+          <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=800&q=80" alt="Aura Rooftop Lounge at night" loading="lazy">
+          <div class="hours">Open daily 4:00 PM – 12:00 AM</div>
+          <h3>Aura Rooftop Lounge</h3>
+          <p>Craft cocktails, curated wine pairings and Mediterranean tapas above the city skyline.</p>
+        </article>
+        <article class="venue">
+          <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80" alt="Café Fidel counter" loading="lazy">
+          <div class="hours">Open daily 7:00 AM – 6:00 PM</div>
+          <h3>Café Fidel</h3>
+          <p>Artisanal espresso, freshly baked French pastries and gourmet grab-and-go lunches for busy travelers.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="amenities">
+    <div class="wrap">
+      <div class="head">
+        <h2>Designed for rest, renewal and executive gatherings</h2>
+      </div>
+      <div class="split">
+        <div>
+          <div class="amen">
+            <div><h3>Heated infinity pool</h3><p>Open daily 6:00 AM – 10:00 PM, with poolside cabana towel service.</p></div>
+            <div><h3>24/7 fitness &amp; spa</h3><p>Round-the-clock gym access, plus The Grand Wellness Spa (9:00 AM – 8:00 PM).</p></div>
+            <div><h3>10,000+ sq ft for events</h3><p>Two grand ballrooms and four AV-equipped executive boardrooms with catering.</p></div>
+            <div><h3>Valet &amp; airport chauffeur</h3><p>Underground valet ($35 a night) with EV chargers. Private sedan ($75) and SUV ($110) transfers.</p></div>
+          </div>
+          <div class="family"><b>Pet and family friendly</b>Children under 12 stay free with complimentary cribs. Dogs up to 30 lbs are welcome ($50 per stay pet package).</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=1000&q=80" alt="Fidel Grand Hotel pool and spa" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <section id="policies" class="band">
+    <div class="wrap">
+      <div class="head"><h2>Guest information</h2></div>
+      <div class="policies">
+        <div class="policy"><h3>Check-in &amp; check-out</h3><p>Check-in at 3:00 PM (early from 12:00 PM, subject to availability). Check-out at 11:00 AM. Luggage storage is open 24/7.</p></div>
+        <div class="policy"><h3>Flexible cancellation</h3><p>Change or cancel free up to 24 hours before arrival. “Pay at Hotel” is available with a card guarantee.</p></div>
+        <div class="policy"><h3>Executive day-use</h3><p>Day passes (9:00 AM – 5:00 PM) at 50% of the nightly rate, including Wi-Fi and wellness access.</p></div>
+        <div class="policy"><h3>24/7 AI concierge</h3><p>Late arrival notes, group quotes, spa bookings or lost and found? Chat with Clara anytime.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <a class="brand" href="#">FIDEL <span>GRAND</span> Hotel &amp; Suites</a>
+  Interactive demo showcase · Powered by Clara, AI front desk receptionist<br>
+  © 2026 Fidel Grand Hotel. All rights reserved.
+</footer>
+
+<script>
+  // The "Book with Clara" buttons scroll to the top hint; the Jotform bubble opens on click.
+  function askClara(){
+    alert('Tap the chat bubble at the bottom right to book with Clara.');
+    return false;
+  }
+</script>
+
+<!-- Clara: Jotform AI agent embed -->
+<script src='https://cdn.jotfor.ms/agent/embedjs/01a205df48e87000883992566163057e12fd/embed.js'>
+</script>
+</body>
+</html>
